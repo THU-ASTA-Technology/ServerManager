@@ -4,12 +4,14 @@ from configparser import ConfigParser
 
 class myAES:
     def __init__(self, path):
+        #从asta.ini读入配置
         self.config = ConfigParser(allow_no_value=True)
         self.config.read(path, encoding="utf-8")
         self.key = self.config.get('GPU_Server', 'KEY')
         self.iv = self.config.get('GPU_Server', 'IV')
     
     def encrypt(self, start, end):
+        #输入两个时间，加密为字符串
         text = str(start.timestamp())+' '+str(end.timestamp())
         l = len(text)&15
         if l>0:
@@ -19,6 +21,7 @@ class myAES:
         return res
     
     def decrypt(self, text):
+        #输入密文解密为开始、结束时间
         self.aes = AES.new(self.key, AES.MODE_CBC, self.iv)
         text = self.aes.decrypt(text)
         print(text)
@@ -26,6 +29,7 @@ class myAES:
         return start, end
 
 if __name__ == "__main__":
+    #测试
     a = myAES('asta.ini')
     b = datetime.now()
     c = datetime.now()
