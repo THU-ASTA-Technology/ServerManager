@@ -20,5 +20,6 @@ from ServerManager import work
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('submit/', work.submitToken),
+    path('submit/', work.submit_token),
+    path('submit_result/', work.submitToken),
 ]

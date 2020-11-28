@@ -9,6 +9,9 @@ import random
 import datetime
 from database.models import Reservation
 
+def submit_token(request):
+    return render(request, 'SubmitToken.html')
+
 def changePassword(username):
     passwd = ''.join([random.choice(string.ascii_letters) for i in range(16)])
 

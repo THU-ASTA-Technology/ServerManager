@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 config=ConfigParser(allow_no_value=True)
 config.read(os.path.join(BASE_DIR, 'server.ini'), encoding="utf-8")
 SECRET_KEY = config.get('global', 'SECRET_KEY')
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'ServerManager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
